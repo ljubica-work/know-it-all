@@ -1,5 +1,5 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import routes from './constants/routes';
 
 import Login from './components/Login';
@@ -10,15 +10,8 @@ import Test from './pages/Test';
 
 import Signup from './pages/Signup';
 
-const App = () => {
-  // return (
-  //   <div className='App'>
-  //     <Login />
-  //     <hr />
-  //     <Registration />
-  //   </div>
-  // );
-
+function App() {
+  const [currentUser, setCurrentUser] = useState(null);
   return (
     <>
       <Login />
@@ -29,20 +22,20 @@ const App = () => {
           <Home />
         </Route>
         <Route path={routes.LOGIN}>
-          <Login />
+          {currentUser ? <Redirect to={routes.DASHBOARD} /> : <Login />}
         </Route>
         <Route path={routes.SIGNUP}>
-          <Signup />
+          {currentUser ? <Redirect to={routes.DASHBOARD} /> : <Signup />}
         </Route>
         <Route path={routes.DASHBOARD}>
-          <Dashboard />
+          {currentUser ? <Dashboard /> : <Redirect to={routes.LOGIN} />}
         </Route>
         <Route path={routes.TEST}>
-          <Test />
+          {currentUser ? <Test /> : <Redirect to={routes.LOGIN} />}
         </Route>
       </Switch>
     </>
   );
-};
+}
 
 export default App;
