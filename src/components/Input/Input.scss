@@ -1,24 +1,50 @@
+@import '../../styles/base.scss';
+
 .input {
-  display: block;
-  width: 400px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-radius: 0.25rem;
-  border: 1px solid gray;
-  background-color: rgb(235, 235, 235);
+  display: flex;
+  padding: 28px 32px;
+  border-radius: 6px;
 
-  &--small {
-    height: 2rem;
-    font-size: 0.8rem;
+  &--light {
+    background-color: $white;
+
+    .input__field {
+      background-color: $white;
+      color: $veryDarkBlue;
+    }
   }
 
-  &--medium {
-    height: 2.5rem;
-    font-size: 1rem;
+  &--dark {
+    background-color: $veryDarkBlue;
+
+    .input__field {
+      background-color: $veryDarkBlue;
+      color: $white;
+    }
+  }
+}
+
+.input__field {
+  border: none;
+  @include body-text;
+
+  &:focus {
+    outline: none;
   }
 
-  &--large {
-    height: 3rem;
-    font-size: 1.2rem;
+  &::placeholder {
+    opacity: 0.5;
   }
+
+  &:-ms-input-placeholder {
+    opacity: 0.5;
+  }
+
+  &::-ms-input-placeholder {
+    opacity: 0.5;
+  }
+}
+
+.input__icon-wrapper {
+  margin-right: 16px;
 }
