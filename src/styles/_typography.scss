@@ -1,0 +1,31 @@
+@import 'fonts.scss';
+
+@mixin h1($fontSize: 28px, $lineHeight: 34px) {
+  font-family: KumbhSans-Bold;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+}
+
+@mixin h2($fontSize: 24px, $lineHeight: 29px) {
+  font-family: KumbhSans-Bold;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+}
+
+@mixin h3($fontSize: 20px, $lineHeight: 24px) {
+  font-family: KumbhSans-Bold;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+}
+
+@mixin h4($fontSize: 14px, $lineHeight: 18px) {
+  font-family: KumbhSans-Bold;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+}
+
+@mixin body-text($fontSize: 16px, $lineHeight: 26px) {
+  font-family: KumbhSans;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+}
