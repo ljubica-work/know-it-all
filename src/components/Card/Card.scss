@@ -1,0 +1,73 @@
+@import '../../styles/base.scss';
+
+.card {
+  width: 350px;
+  height: 228px;
+  border-radius: 6px;
+  position: relative;
+
+  &--light {
+    background-color: $white;
+    .card__title {
+      color: $veryDarkBlue;
+    }
+  }
+
+  &--dark {
+    background-color: $veryDarkBlue;
+    .card__title {
+      color: $white;
+    }
+  }
+}
+
+.card__content {
+  padding: 0 32px;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  padding-top: 50px;
+}
+
+.card__info {
+  @include body-text(16px, 16px);
+  color: $darkGrey;
+}
+
+.card__title {
+  @include h3;
+  margin: 16px 0 17px 0;
+  cursor: pointer;
+
+  &:hover {
+    color: $darkGrey;
+  }
+}
+
+.card__company {
+  @include body-text(16px, 16px);
+  color: $darkGrey;
+  display: block;
+}
+
+.card__location {
+  @include h4;
+  display: block;
+  color: $violet;
+  position: absolute;
+  bottom: 36px;
+}
+
+.card__image {
+  position: relative;
+  left: 32px;
+  top: -25px;
+}
+
+.card__middle-dot {
+  margin: 0 12px;
+}
+
+a {
+  text-decoration: none;
+}
