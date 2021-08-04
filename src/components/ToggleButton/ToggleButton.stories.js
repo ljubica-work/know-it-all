@@ -3,12 +3,6 @@ import React from 'react';
 import ToggleButton from '../ToggleButton/index';
 import Center from '../Center';
 
-// export default {
-//   title: 'ToggleButton',
-//   component: ToggleButton,
-//   decorators: [(story) => <Center>{story()}</Center>],
-// };
-
 export default {
   title: 'ToggleButton',
   parameters: {
