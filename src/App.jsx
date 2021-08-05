@@ -1,28 +1,53 @@
 import React, { useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import routes from './constants/routes';
+import { auth } from './firebase';
+import { isEmailInvalid } from './helpers/validations';
+import useStateWithLocalStorage from './helpers/useStateWithLocalStorage';
 
-import Login from './components/Login';
-import Registration from './components/Registration';
+import Login from './pages/Login';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Test from './pages/Test';
-
 import Signup from './pages/Signup';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [currentUser, setCurrentUser] = useStateWithLocalStorage('user', null);
+
+  const loginUser = (e) => {
+    e.preventDefault();
+
+    if (isEmailInvalid(email)) {
+      setError(isEmailInvalid(email));
+    } else {
+      auth
+        .signInWithEmailAndPassword(email, password)
+        .then((user) => {
+          setCurrentUser(user.user);
+        })
+        .catch((err) => setError(err.message));
+    }
+  };
   return (
     <>
-      <Login />
-      <hr />
-      <Registration />
       <Switch>
         <Route exact path={routes.HOME}>
-          <Home />
+          <Home setCurrentUser={setCurrentUser} />
         </Route>
         <Route path={routes.LOGIN}>
-          {currentUser ? <Redirect to={routes.DASHBOARD} /> : <Login />}
+          {currentUser ? (
+            <Redirect to={routes.DASHBOARD} />
+          ) : (
+            <Login
+              loginUser={loginUser}
+              setEmail={setEmail}
+              setPassword={setPassword}
+              error={error}
+            />
+          )}
         </Route>
         <Route path={routes.SIGNUP}>
           {currentUser ? <Redirect to={routes.DASHBOARD} /> : <Signup />}
