@@ -7,9 +7,9 @@ const RadioButton = ({ label, name }) => {
   return (
     <div className='radio-button'>
       <label className='radio-button__label'>
+        {label}
         <input type='radio' className='radio-button__input' name={name} />
         <span className='radio-button__checkmark'></span>
-        {label}
       </label>
     </div>
   );
