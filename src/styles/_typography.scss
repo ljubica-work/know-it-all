@@ -12,13 +12,13 @@
   line-height: $lineHeight;
 }
 
-@mixin h3($fontSize: 20px, $lineHeight: 24px) {
+@mixin h3($fontSize: 20px, $lineHeight: 20px) {
   font-family: KumbhSans-Bold;
   font-size: $fontSize;
   line-height: $lineHeight;
 }
 
-@mixin h4($fontSize: 14px, $lineHeight: 18px) {
+@mixin h4($fontSize: 14px, $lineHeight: 14px) {
   font-family: KumbhSans-Bold;
   font-size: $fontSize;
   line-height: $lineHeight;
