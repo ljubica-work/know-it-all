@@ -1,0 +1,68 @@
+@import '../../styles/base.scss';
+
+.checkbox {
+  display: flex;
+}
+
+.checkbox__label {
+  @include h4(16px, 16px);
+  color: $veryDarkBlue;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 24px 0;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    .checkbox__checkmark {
+      background-color: rgba($violet, 0.25);
+    }
+  }
+}
+
+.checkbox__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  transition: color 0.25s;
+  &:checked ~ .checkbox__checkmark {
+    background-color: $violet;
+    &::after {
+      display: block;
+    }
+  }
+}
+
+.checkbox__checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  background-color: rgba($veryDarkBlue, 0.1);
+  flex-shrink: 0;
+  margin-right: 15px;
+  border-radius: 3px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 9px;
+    top: 4px;
+    width: 5px;
+    height: 11px;
+    border: solid $white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(405deg);
+    -ms-transform: rotate(405deg);
+    transform: rotate(405deg);
+  }
+}
