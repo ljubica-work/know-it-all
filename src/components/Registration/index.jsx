@@ -1,45 +1,13 @@
 import React, { useState } from 'react';
-import firebase, { auth } from '../../firebase';
-import {
-  isEmailInvalid,
-  isPasswordInvalid,
-  isEmpty,
-} from '../../helpers/validations';
+import PropTypes from 'prop-types';
 
-const Registration = () => {
+const Registration = ({ handleSubmit, setError, error }) => {
   const [credentials, setCredentials] = useState({
     username: '',
     email: '',
     password: '',
     repeatedPassword: '',
   });
-  const [error, setError] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (isEmailInvalid(credentials.email)) {
-      setError(isEmailInvalid(credentials.email));
-    } else if (isPasswordInvalid(credentials.password)) {
-      setError(isPasswordInvalid(credentials.password));
-    } else if (isEmpty(credentials.email)) {
-      setError(isEmpty(credentials.email));
-    } else {
-      auth
-        .createUserWithEmailAndPassword(credentials.email, credentials.password)
-        .then((res) => {
-          return firebase
-            .firestore()
-            .collection('users')
-            .doc(res.user.uid)
-            .set({
-              age: 36,
-              name: credentials.username,
-            });
-        })
-        .catch((err) => setError(err.message));
-    }
-  };
 
   const handleChange = (e) => {
     setError('');
@@ -50,7 +18,7 @@ const Registration = () => {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={(e) => handleSubmit(e, credentials)}>
       <input
         type='text'
         placeholder='username'
@@ -79,6 +47,12 @@ const Registration = () => {
       {error}
     </form>
   );
+};
+
+Registration.propTypes = {
+  handleSubmit: PropTypes.func,
+  setError: PropTypes.func,
+  error: PropTypes.string,
 };
 
 export default Registration;
