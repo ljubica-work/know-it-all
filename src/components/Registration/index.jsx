@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { auth } from '../../firebase';
+import firebase, { auth } from '../../firebase';
 import {
   isEmailInvalid,
   isPasswordInvalid,
@@ -15,10 +15,6 @@ const Registration = () => {
   });
   const [error, setError] = useState('');
 
-  // const handleError = (error) => {
-  //   console.log(error);
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -32,10 +28,14 @@ const Registration = () => {
       auth
         .createUserWithEmailAndPassword(credentials.email, credentials.password)
         .then((res) => {
-          const user = auth.currentUser;
-          return user.updateProfile({
-            displayName: credentials.username,
-          });
+          return firebase
+            .firestore()
+            .collection('users')
+            .doc(res.user.uid)
+            .set({
+              age: 36,
+              name: credentials.username,
+            });
         })
         .catch((err) => setError(err.message));
     }
