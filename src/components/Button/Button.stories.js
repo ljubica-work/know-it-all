@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '.';
+import Button, { ButtonTypes } from '.';
 import Center from '../Center';
 
 export default {
@@ -8,7 +8,9 @@ export default {
   component: Button,
   decorators: [(story) => <Center>{story()}</Center>],
   argTypes: {
-    onClick: { action: 'clicked' },
+    variant: {
+      table: { disable: true },
+    },
   },
 };
 
@@ -18,18 +20,21 @@ const Template = (args) => {
 
 export const Primary = Template.bind({});
 Primary.args = {
-  variant: 'primary',
+  variant: ButtonTypes.PRIMARY,
   children: 'Button 1',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  variant: 'secondary',
+  variant: ButtonTypes.SECONDARY,
   children: 'Button 2',
 };
 
 export const Dark = Template.bind({});
 Dark.args = {
-  variant: 'dark',
+  variant: ButtonTypes.DARK,
   children: 'Button 2 Dark',
+};
+Dark.parameters = {
+  backgrounds: { default: 'dark' },
 };

@@ -13,18 +13,18 @@ export const parameters = {
     },
   },
   backgrounds: {
-    default: 'white',
+    default: 'light',
     values: [
       {
-        name: 'white',
-        value: '##F2F2F2',
+        name: 'light',
+        value: '#F2F2F2',
       },
       {
         name: 'violet',
         value: '#5964E0',
       },
       {
-        name: 'black',
+        name: 'dark',
         value: '#121721',
       },
     ],

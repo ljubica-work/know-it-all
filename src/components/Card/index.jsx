@@ -4,6 +4,11 @@ import { ReactComponent as MiddleDot } from '../../assets/svg/middle-dot.svg';
 
 import './Card.scss';
 
+export const CardTypes = {
+  LIGHT: 'light',
+  DARK: 'dark',
+};
+
 const Card = ({ cardInfo, variant }) => {
   return (
     <div className={`card card--${variant}`}>

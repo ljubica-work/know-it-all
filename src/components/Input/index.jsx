@@ -6,7 +6,21 @@ import { ReactComponent as Location } from '../../assets/svg/location.svg';
 
 import './Input.scss';
 
-const Input = ({ variant = 'light', type = 'location', ...rest }) => {
+export const InputVariants = {
+  LIGHT: 'light',
+  DARK: 'dark',
+};
+
+export const InputTypes = {
+  LOCATION: 'location',
+  MAGNIFIER: 'magnifier',
+};
+
+const Input = ({
+  variant = InputVariants.light,
+  type = InputTypes.LOCATION,
+  ...rest
+}) => {
   const adjustInputSize = () => {
     const inputField = document.querySelector('.input__field');
     inputField.setAttribute(
