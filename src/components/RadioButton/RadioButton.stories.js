@@ -1,12 +1,10 @@
 import React from 'react';
 
 import RadioButton from '.';
-import Center from '../Center';
 
 export default {
   title: 'RadioButton',
   component: RadioButton,
-  decorators: [(story) => <Center>{story()}</Center>],
 };
 
 const Template = (args) => {

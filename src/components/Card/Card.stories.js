@@ -1,12 +1,12 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 import Card, { CardTypes } from '.';
-import Center from '../Center';
 
 export default {
   title: 'Card',
   component: Card,
-  decorators: [(story) => <Center>{story()}</Center>],
+  decorators: [(story) => <MemoryRouter>{story()}</MemoryRouter>],
   args: {
     cardInfo: {
       time: '5h ago',
@@ -15,6 +15,7 @@ export default {
       company: 'Scoot',
       location: 'United Kingdom',
       image: 'card-image.svg',
+      testId: 'css',
     },
   },
   argTypes: {

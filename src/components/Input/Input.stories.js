@@ -1,12 +1,10 @@
 import React from 'react';
 
 import Input, { InputVariants, InputTypes } from '.';
-import Center from '../Center';
 
 export default {
   title: 'Input',
   component: Input,
-  decorators: [(story) => <Center>{story()}</Center>],
   argTypes: {
     type: {
       control: {
