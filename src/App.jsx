@@ -12,8 +12,6 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
 
-import Header from './components/Header';
-
 function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,7 +34,6 @@ function App() {
   };
   return (
     <>
-      <Header />
       <Switch>
         <Route exact path={routes.HOME}>
           <Home setCurrentUser={setCurrentUser} />
