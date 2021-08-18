@@ -1,0 +1,54 @@
+@import '../../styles/base.scss';
+
+.search-bar__wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 40px;
+}
+
+.search-bar {
+  display: none;
+
+  @include md {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    background-color: $white;
+    border-radius: 6px;
+    padding-right: 15px;
+  }
+
+  @include lg {
+    max-width: 1110px;
+  }
+}
+
+.search-bar__checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 40%;
+
+  @include lg {
+    width: unset;
+  }
+}
+
+.search-bar__title-input,
+.search-bar__location-input {
+  border-radius: 0;
+  border-right: 1px solid rgba($darkGrey, 0.2);
+  width: 30%;
+}
+
+.search-bar__title-input {
+  @include lg {
+    width: 463px;
+  }
+}
+
+.search-bar__checkbox {
+  margin-left: 20px;
+  margin-right: 20px;
+}
