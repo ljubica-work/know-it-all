@@ -3,13 +3,19 @@ import { ReactComponent as TriangleLeft } from '../../assets/svg/triangle-left.s
 import { ReactComponent as TriangleMiddle } from '../../assets/svg/triangle-middle.svg';
 import { ReactComponent as TriangleRight } from '../../assets/svg/triangle-right.svg';
 
+import ToggleButton from '../ToggleButton';
+
 import './Header.scss';
 
 const Header = () => {
   return (
     <div className='header'>
       <div className='header__inner'>
-        <div className='header__logo'>knowIT</div>
+        <div className='header__content'>
+          <div className='header__logo'>knowIT</div>
+          <ToggleButton className='header__toggle-button' />
+        </div>
+
         <TriangleLeft className='header__triangle header__triangle--left' />
         <TriangleMiddle className='header__triangle header__triangle--middle' />
         <TriangleRight className='header__triangle header__triangle--right' />

@@ -3,6 +3,7 @@
 .toggle-button {
   display: flex;
   align-items: center;
+  z-index: 1;
 }
 
 .toggle-button__label {

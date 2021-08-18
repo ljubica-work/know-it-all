@@ -21,7 +21,7 @@
   @include logo(30px, 30px);
   color: $white;
   display: inline;
-  margin-left: 160px;
+  // margin-left: 160px;
 
   @include md {
     @include logo(40px, 40px);
@@ -44,4 +44,11 @@
   &--left {
     left: 0;
   }
+}
+
+.header__content {
+  width: 100%;
+  max-width: 1110px;
+  display: flex;
+  justify-content: space-between;
 }
