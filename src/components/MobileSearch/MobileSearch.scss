@@ -1,0 +1,26 @@
+@import '../../styles/base.scss';
+
+.mobile-search {
+  display: flex;
+  background-color: $white;
+  align-items: center;
+  justify-content: center;
+  margin: 0 24px;
+  border-radius: 6px;
+  height: 80px;
+  padding: 0 10px;
+
+  @include md {
+    display: none;
+  }
+}
+
+.mobile-search__button {
+  padding: 14px;
+}
+
+.mobile-search__button-icon {
+  height: 20px;
+  width: 20px;
+  display: block;
+}

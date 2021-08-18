@@ -4,6 +4,7 @@
   display: flex;
   padding: 28px 32px;
   border-radius: 6px;
+  height: 80px;
 
   &--light {
     background-color: $white;
@@ -22,10 +23,20 @@
       color: $white;
     }
   }
+
+  &--filter {
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+
+    .input__icon-wrapper {
+      margin: 0;
+    }
+  }
 }
 
 .input__field {
   border: none;
+  width: 100%;
   @include body-text;
 
   &:focus {
@@ -47,4 +58,15 @@
 
 .input__icon-wrapper {
   margin-right: 16px;
+}
+
+.input__filter-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
