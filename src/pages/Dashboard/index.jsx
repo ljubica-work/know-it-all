@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import routes from '../../constants/routes';
 import firebase from 'firebase';
 
 import Header from '../../components/Header';
@@ -12,20 +10,28 @@ const Dashboard = () => {
   const [tests, setTests] = useState([]);
 
   useEffect(() => {
+    let testsArray = [];
     firebase
       .firestore()
       .collection('tests')
       .get()
       .then((snapshot) => {
-        const testsArray = snapshot.docs.map((doc) => doc.data());
+        snapshot.docs.forEach((doc) => {
+          testsArray.push({ ...doc.data(), id: doc.id });
+        });
         console.log(testsArray);
         setTests(testsArray);
       });
   }, []);
   return (
     <div className='dashboard'>
-      DASHBOARD
-      {tests && tests.map((test) => <Card key={test.name} cardInfo={test} />)}
+      <Header />
+      <div className='dashboard__cards'>
+        {tests &&
+          tests.map((test) => (
+            <Card key={test.name} cardInfo={test} className='dashboard__card' />
+          ))}
+      </div>
     </div>
   );
 };
