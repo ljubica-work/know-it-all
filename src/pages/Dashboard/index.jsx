@@ -1,15 +1,37 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import routes from '../../constants/routes';
+import React, { useEffect, useState } from 'react';
+import firebase from 'firebase';
+
+import Header from '../../components/Header';
+import Card from '../../components/Card';
 
 import './Dashboard.scss';
 
 const Dashboard = () => {
+  const [tests, setTests] = useState([]);
+
+  useEffect(() => {
+    let testsArray = [];
+    firebase
+      .firestore()
+      .collection('tests')
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          testsArray.push({ ...doc.data(), id: doc.id });
+        });
+        console.log(testsArray);
+        setTests(testsArray);
+      });
+  }, []);
   return (
     <div className='dashboard'>
-      DASHBOARD
-      <Link to={`${routes.TEST}/Test1`}>Test1</Link>
-      <Link to={`${routes.TEST}/Test2`}>Test2</Link>
+      <Header />
+      <div className='dashboard__cards'>
+        {tests &&
+          tests.map((test) => (
+            <Card key={test.name} cardInfo={test} className='dashboard__card' />
+          ))}
+      </div>
     </div>
   );
 };

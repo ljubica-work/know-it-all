@@ -41,6 +41,7 @@ const Test = () => {
             res.docs.forEach((question) => {
               questionsArray.push({ id: question.id, ...question.data() });
             });
+            console.log(questionsArray);
             setQuestions(questionsArray);
           });
       });

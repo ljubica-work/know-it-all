@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 import Card from '.';
 import Center from '../Center';
@@ -6,16 +7,20 @@ import Center from '../Center';
 export default {
   title: 'Card',
   component: Card,
-  decorators: [(story) => <Center>{story()}</Center>],
+  decorators: [
+    (story) => <Center>{story()}</Center>,
+    (story) => <MemoryRouter>{story()}</MemoryRouter>,
+  ],
   args: {
     cardInfo: {
-      time: '5h ago',
-      engagement: 'Full Time',
-      title: 'Senior Software Engineer',
-      company: 'Scoot',
-      location: 'United Kingdom',
-      image: 'card-image.svg',
+      description: 'Test your knowledge in CSS',
+      duration: '10 min',
+      id: 'css',
+      level: 'Advanced',
+      name: 'CSS',
+      numberOfQuestions: '17',
     },
+    className: 'dashboard__card',
   },
   parameters: {
     backgrounds: {

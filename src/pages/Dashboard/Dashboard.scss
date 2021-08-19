@@ -1,0 +1,39 @@
+@import '../../styles/base.scss';
+
+.dashboard {
+  background-color: $lightGrey;
+  height: 100vh;
+}
+
+.dashboard__cards {
+  padding-top: 140px;
+
+  @include md {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  @include lg {
+    max-width: 1110px;
+    width: unset;
+    flex-wrap: nowrap;
+  }
+}
+
+.dashboard__card {
+  width: 90%;
+  height: 228px;
+  margin: 0 auto 50px auto;
+
+  @include md {
+    width: 49%;
+    margin: 0 0 50px 0;
+  }
+
+  @include lg {
+    width: 31.5%;
+  }
+}
