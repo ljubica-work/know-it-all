@@ -13,12 +13,10 @@ import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
 
 function App() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [currentUser, setCurrentUser] = useStateWithLocalStorage('user', null);
 
-  const loginUser = (e) => {
+  const loginUser = (e, email, password) => {
     e.preventDefault();
 
     if (isEmailInvalid(email)) {
@@ -42,12 +40,7 @@ function App() {
           {currentUser ? (
             <Redirect to={routes.DASHBOARD} />
           ) : (
-            <Login
-              loginUser={loginUser}
-              setEmail={setEmail}
-              setPassword={setPassword}
-              error={error}
-            />
+            <Login loginUser={loginUser} error={error} />
           )}
         </Route>
         <Route path={routes.SIGNUP}>

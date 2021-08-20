@@ -2,19 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import LoginComponent from '../../components/LoginComponent';
+import Header from '../../components/Header';
 
 import './Login.scss';
 
-const Login = ({ loginUser, setEmail, setPassword, error }) => {
+const Login = ({ loginUser, error }) => {
   return (
     <div className='login'>
-      LOGIN
-      <LoginComponent
-        loginUser={loginUser}
-        setEmail={setEmail}
-        setPassword={setPassword}
-        error={error}
-      />
+      <Header />
+      <div className='login__wrapper'>
+        <LoginComponent loginUser={loginUser} error={error} />
+      </div>
     </div>
   );
 };
