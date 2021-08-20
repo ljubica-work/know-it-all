@@ -1,22 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const LoginComponent = ({ loginUser, setEmail, setPassword, error }) => {
+import Input from '../Input';
+import Button from '../Button';
+
+import './LoginComponent.scss';
+
+const LoginComponent = ({ loginUser, error }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
-    <div>
-      <form onSubmit={(e) => loginUser(e)}>
-        <input
-          type='email'
-          placeholder='email'
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
+    <div className='login-component'>
+      <h1 className='login-component__title'>Log In</h1>
+      <form
+        onSubmit={(e) => loginUser(e, email, password)}
+        className='login-component__form'
+      >
+        <div className='login-component__input'>
+          <Input
+            placeholder='Email'
+            type='email'
+            iconType='email'
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <Input
           type='password'
-          placeholder='pass'
+          placeholder='Password'
+          iconType='password'
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type='submit'>Log In</button>
-        {error}
+        <Button type='submit'>Log In</Button>
+        <span className='login-component__error'>{error}</span>
       </form>
     </div>
   );

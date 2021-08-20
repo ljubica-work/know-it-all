@@ -27,6 +27,7 @@
 .input__field {
   border: none;
   @include body-text;
+  width: 100%;
 
   &:focus {
     outline: none;
@@ -47,4 +48,9 @@
 
 .input__icon-wrapper {
   margin-right: 16px;
+}
+
+.input__icon {
+  height: 24px;
+  width: 24px;
 }

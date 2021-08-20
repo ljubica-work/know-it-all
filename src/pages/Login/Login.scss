@@ -1,0 +1,12 @@
+@import '../../styles/base.scss';
+
+.login {
+  background-color: $lightGrey;
+  height: 100vh;
+}
+
+.login__wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
+}
