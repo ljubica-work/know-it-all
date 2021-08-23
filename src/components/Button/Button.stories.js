@@ -1,12 +1,10 @@
 import React from 'react';
 
 import Button, { ButtonTypes } from '.';
-import Center from '../Center';
 
 export default {
   title: 'Button',
   component: Button,
-  decorators: [(story) => <Center>{story()}</Center>],
   argTypes: {
     variant: {
       table: { disable: true },
