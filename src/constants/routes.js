@@ -4,6 +4,7 @@ const routes = {
   SIGNUP: '/signup',
   DASHBOARD: '/tests',
   TEST: '/test',
+  START: '/start',
 };
 
 export default routes;

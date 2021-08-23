@@ -11,6 +11,7 @@ import Test from './pages/Test';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
+import StartTest from './pages/StartTest';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -55,6 +56,9 @@ function App() {
         </Route>
         <Route path={routes.DASHBOARD}>
           {currentUser ? <Dashboard /> : <Redirect to={routes.LOGIN} />}
+        </Route>
+        <Route path={`${routes.START}/:id`}>
+          {currentUser ? <StartTest /> : <Redirect to={routes.LOGIN} />}
         </Route>
         <Route path={`${routes.TEST}/:id`}>
           {currentUser ? <Test /> : <Redirect to={routes.LOGIN} />}
