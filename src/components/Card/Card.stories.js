@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Card from '.';
+import Card, { CardTypes } from '.';
 import Center from '../Center';
 
 export default {
@@ -17,13 +17,9 @@ export default {
       image: 'card-image.svg',
     },
   },
-  parameters: {
-    backgrounds: {
-      default: 'light',
-      values: [
-        { name: 'light', value: '#F2F2F2' },
-        { name: 'dark', value: '#121721' },
-      ],
+  argTypes: {
+    variant: {
+      table: { disable: true },
     },
   },
 };
@@ -34,12 +30,12 @@ const Template = (args) => {
 
 export const Light = Template.bind({});
 Light.args = {
-  variant: 'light',
+  variant: CardTypes.LIGHT,
 };
 
 export const Dark = Template.bind({});
 Dark.args = {
-  variant: 'dark',
+  variant: CardTypes.DARK,
 };
 Dark.parameters = {
   backgrounds: { default: 'dark' },

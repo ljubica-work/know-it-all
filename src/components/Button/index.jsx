@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 
 import './Button.scss';
 
-const Button = ({ variant = 'primary', children }) => {
+export const ButtonTypes = {
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+  DARK: 'dark',
+};
+
+const Button = ({ variant = ButtonTypes.PRIMARY, children }) => {
   return <button className={`button button--${variant}`}>{children}</button>;
 };
 

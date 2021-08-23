@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Input from '.';
+import Input, { InputVariants, InputTypes } from '.';
 import Center from '../Center';
 
 export default {
@@ -11,14 +11,11 @@ export default {
     type: {
       control: {
         type: 'select',
-        options: ['magnifier', 'location'],
+        options: [InputTypes.MAGNIFIER, InputTypes.LOCATION],
       },
     },
     variant: {
-      control: {
-        type: 'select',
-        options: ['light', 'dark'],
-      },
+      table: { disable: true },
     },
   },
 };
@@ -29,14 +26,17 @@ const Template = (args) => {
 
 export const Light = Template.bind({});
 Light.args = {
-  variant: 'light',
+  variant: InputVariants.LIGHT,
   placeholder: 'Enter desired job...',
-  type: 'magnifier',
+  type: InputTypes.MAGNIFIER,
 };
 
 export const Dark = Template.bind({});
 Dark.args = {
-  variant: 'dark',
+  variant: InputVariants.DARK,
   placeholder: 'Enter desired job...',
-  type: 'magnifier',
+  type: InputTypes.MAGNIFIER,
+};
+Dark.parameters = {
+  backgrounds: { default: 'dark' },
 };
