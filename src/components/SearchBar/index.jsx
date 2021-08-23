@@ -7,6 +7,13 @@ import Button from '../Button';
 import './SearchBar.scss';
 
 const SearchBar = () => {
+  const checkboxLabel = () => {
+    if (window.screen.width > 900 && window.innerWidth > 900) {
+      return 'Full Time Only';
+    } else {
+      return 'Full Time';
+    }
+  };
   return (
     <div className='search-bar__wrapper'>
       <div className='search-bar'>
@@ -26,8 +33,7 @@ const SearchBar = () => {
         </div>
         <div className='search-bar__checkbox-wrapper'>
           <Checkbox
-            label='Full Time Only'
-            labelSmall='Full Time'
+            label={checkboxLabel()}
             name='full-time'
             className='search-bar__checkbox'
           />

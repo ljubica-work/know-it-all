@@ -38,7 +38,6 @@ const Input = ({
 Input.propTypes = {
   variant: PropTypes.string,
   type: PropTypes.string,
-  className: PropTypes.string,
 };
 
 export default Input;
