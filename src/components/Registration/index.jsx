@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import Input from '../Input';
+import Button from '../Button';
+
+import './Registration.scss';
+
 const Registration = ({ handleSubmit, setError, error }) => {
   const [credentials, setCredentials] = useState({
     username: '',
@@ -18,34 +23,48 @@ const Registration = ({ handleSubmit, setError, error }) => {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e, credentials)}>
-      <input
-        type='text'
-        placeholder='username'
-        name='username'
-        onChange={(e) => handleChange(e)}
-      />
-      <input
-        type='email'
-        placeholder='email'
-        name='email'
-        onChange={(e) => handleChange(e)}
-      />
-      <input
-        type='password'
-        placeholder='password'
-        name='password'
-        onChange={(e) => handleChange(e)}
-      />
-      <input
-        type='password'
-        placeholder='repeat password'
-        name='repeatedPassword'
-        onChange={(e) => handleChange(e)}
-      />
-      <button type='submit'>register</button>
-      {error}
-    </form>
+    <div className='registration'>
+      <h1 className='registration__title'>Sign Up</h1>
+      <form
+        onSubmit={(e) => handleSubmit(e, credentials)}
+        className='registration__form'
+      >
+        <div className='registration__input'>
+          <Input
+            type='text'
+            placeholder='Username'
+            name='username'
+            onChange={(e) => handleChange(e)}
+          />
+        </div>
+        <div className='registration__input'>
+          <Input
+            type='email'
+            placeholder='Email'
+            name='email'
+            onChange={(e) => handleChange(e)}
+          />
+        </div>
+        <div className='registration__input'>
+          <Input
+            type='password'
+            placeholder='Password'
+            name='password'
+            onChange={(e) => handleChange(e)}
+          />
+        </div>
+        <div className='registration__input'>
+          <Input
+            type='password'
+            placeholder='Repeat password'
+            name='repeatedPassword'
+            onChange={(e) => handleChange(e)}
+          />
+        </div>
+        <Button type='submit'>Sign Up</Button>
+        <span className='registration__error'>{error}</span>
+      </form>
+    </div>
   );
 };
 

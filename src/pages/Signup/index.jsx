@@ -8,6 +8,7 @@ import firebase, { auth } from '../../firebase';
 import { useHistory } from 'react-router-dom';
 import routes from '../../constants/routes';
 
+import Header from '../../components/Header';
 import Registration from '../../components/Registration';
 
 import './Signup.scss';
@@ -43,12 +44,14 @@ const Signup = () => {
   };
   return (
     <div className='signup'>
-      SIGNUP
-      <Registration
-        handleSubmit={handleSubmit}
-        error={error}
-        setError={setError}
-      />
+      <Header />
+      <div className='signup__wrapper'>
+        <Registration
+          handleSubmit={handleSubmit}
+          error={error}
+          setError={setError}
+        />
+      </div>
     </div>
   );
 };
