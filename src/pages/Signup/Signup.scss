@@ -1,0 +1,11 @@
+@import '../../styles/base.scss';
+
+.signup {
+  background-color: $lightGrey;
+  min-height: 100vh;
+}
+
+.signup__wrapper {
+  display: flex;
+  justify-content: center;
+}

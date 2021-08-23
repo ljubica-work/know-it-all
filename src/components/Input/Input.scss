@@ -27,6 +27,7 @@
 .input__field {
   border: none;
   @include body-text;
+  width: 100%;
 
   &:focus {
     outline: none;
