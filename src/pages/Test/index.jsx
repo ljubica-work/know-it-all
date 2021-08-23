@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase';
 import { v1 as uuidv1 } from 'uuid';
 import useStateWithLocalStorage from '../../helpers/useStateWithLocalStorage';
-import { useParams } from 'react-router';
+import { useParams, useLocation } from 'react-router';
+import { useHistory } from 'react-router-dom';
+import routes from '../../constants/routes';
 
 import Question from '../../components/Question';
 
@@ -20,30 +22,41 @@ const Test = () => {
   const [results, setResults] = useState([]);
 
   const testId = useParams().id;
+  const location = useLocation();
+  const history = useHistory();
 
   const reset = () => {
     setCurrentQuestion(0);
   };
 
   useEffect(() => {
-    let questionsArray = [];
-    firebase
-      .firestore()
-      .collection('tests')
-      .doc(testId)
-      .get()
-      .then((snapshot) => {
-        snapshot.ref
-          .collection('questions')
-          .get()
-          .then((res) => {
-            setNumberOfQuestions(res.size);
-            res.docs.forEach((question) => {
-              questionsArray.push({ id: question.id, ...question.data() });
+    if (
+      location.state &&
+      location.state.isStarted &&
+      location.state.testId === testId
+    ) {
+      let questionsArray = [];
+      firebase
+        .firestore()
+        .collection('tests')
+        .doc(testId)
+        .get()
+        .then((snapshot) => {
+          snapshot.ref
+            .collection('questions')
+            .get()
+            .then((res) => {
+              setNumberOfQuestions(res.size);
+              res.docs.forEach((question) => {
+                questionsArray.push({ id: question.id, ...question.data() });
+              });
+              setQuestions(questionsArray);
             });
-            setQuestions(questionsArray);
-          });
-      });
+        });
+    } else {
+      history.push(routes.DASHBOARD);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [testId]);
 
   const finishTest = () => {

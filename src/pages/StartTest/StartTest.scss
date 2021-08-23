@@ -1,1 +1,153 @@
 @import '../../styles/base.scss';
+
+.start-test {
+  background-color: $lightGrey;
+}
+
+.start-test__heading {
+  background-color: $white;
+  max-width: 730px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  bottom: 40px;
+  margin: 0 24px;
+
+  @include md {
+    margin: 0 40px;
+    flex-direction: row;
+  }
+
+  @include lg {
+    margin: 0 auto;
+  }
+}
+
+.start-test__button-heading {
+  margin: 30px 0;
+
+  @include md {
+    margin: 0;
+  }
+}
+
+.start-test__image {
+  height: 50px;
+  width: 50px;
+  border-radius: 15px;
+  position: relative;
+  top: -25px;
+
+  @include md {
+    height: 140px;
+    width: 140px;
+    border-radius: 0px 0px 0px 6px;
+    position: unset;
+  }
+}
+
+.start-test__heading-wrapper {
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+
+  @include md {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.start-test__small-info {
+  @include body-text(16px, 16px);
+  color: $darkGrey;
+}
+
+.start-test__title {
+  @include h2;
+  color: $veryDarkBlue;
+  margin: 5px 0;
+}
+
+.start-test__content {
+  background-color: $white;
+  border-radius: 6px;
+  max-width: 730px;
+  margin: 0 24px 60px 24px;
+  padding: 24px;
+  p {
+    @include body-text(16px, 26px);
+    color: $darkGrey;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  @include md {
+    margin: 0 40px 50px 40px;
+    padding: 48px;
+  }
+
+  @include lg {
+    margin: 0 auto 80px auto;
+  }
+}
+
+.start-test__number-of-questions {
+  display: block;
+  @include h4;
+  color: $violet;
+  margin-bottom: 15px;
+}
+
+.start-test__content-title {
+  @include h3;
+  color: $veryDarkBlue;
+}
+
+.start-test__footer {
+  width: 100%;
+  background-color: $white;
+}
+
+.start-test__footer-inner {
+  max-width: 730px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 40px;
+  height: 96px;
+  margin: 0 24px;
+
+  @include md {
+    margin: 0 40px;
+  }
+
+  @include lg {
+    margin: 0 auto;
+  }
+}
+
+.start-test__footer-title {
+  @include h3;
+  color: $veryDarkBlue;
+}
+
+.start-test__fotter-info {
+  display: none;
+
+  @include md {
+    display: block;
+  }
+}
+
+.start-test__footer-button {
+  width: 100%;
+
+  @include md {
+    width: auto;
+  }
+}
