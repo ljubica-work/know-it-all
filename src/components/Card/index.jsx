@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ReactComponent as MiddleDot } from '../../assets/svg/middle-dot.svg';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes';
-import Icon from '../../helpers/Icon';
+import Icon from '../../components/Icon';
 
 import './Card.scss';
 
