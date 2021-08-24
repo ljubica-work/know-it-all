@@ -1,4 +1,6 @@
 import React from 'react';
+import { withWindow } from 'react-window-decorators';
+import PropTypes from 'prop-types';
 
 import Input from '../Input';
 import Checkbox from '../Checkbox';
@@ -6,14 +8,11 @@ import Button from '../Button';
 
 import './SearchBar.scss';
 
-const SearchBar = () => {
+const SearchBar = ({ ...props }) => {
   const checkboxLabel = () => {
-    if (window.screen.width > 900 && window.innerWidth > 900) {
-      return 'Full Time Only';
-    } else {
-      return 'Full Time';
-    }
+    return props.breakpoint === 'large' ? 'Full Time Only' : 'Full Time';
   };
+
   return (
     <div className='search-bar__wrapper'>
       <div className='search-bar'>
@@ -44,4 +43,8 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+SearchBar.propTypes = {
+  breakpoint: PropTypes.string,
+};
+
+export default withWindow(SearchBar);
