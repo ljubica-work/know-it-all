@@ -14,6 +14,7 @@ const Checkbox = ({ label, name, handleChange }) => {
           className='checkbox__input'
           onChange={(event) => handleChange(event)}
           name={name}
+          value={name}
         />
         <span className='checkbox__checkmark'></span>
       </label>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './RadioButton.scss';
 
-const RadioButton = ({ label, name, handleChange }) => {
+const RadioButton = ({ label, name, handleChange, value }) => {
   return (
     <div className='radio-button'>
       <label className='radio-button__label'>
@@ -12,6 +12,7 @@ const RadioButton = ({ label, name, handleChange }) => {
           type='radio'
           className='radio-button__input'
           name={name}
+          value={value}
           onChange={handleChange}
         />
         <span className='radio-button__checkmark'></span>
@@ -24,6 +25,7 @@ RadioButton.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
   handleChange: PropTypes.func,
+  value: PropTypes.string,
 };
 
 export default RadioButton;

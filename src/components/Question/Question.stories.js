@@ -19,6 +19,9 @@ export default {
       answer: 'option3',
     },
   },
+  parameters: {
+    layout: 'padded',
+  },
 };
 
 const Template = (args) => {

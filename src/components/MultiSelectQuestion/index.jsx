@@ -9,7 +9,7 @@ const MultiSelectQuestion = ({ options, handleChange }) => {
       {Object.keys(options).map((option) => (
         <Checkbox
           label={options[option]}
-          name={options[option]}
+          name={option}
           key={option}
           handleChange={(event) => handleChange(event)}
         />

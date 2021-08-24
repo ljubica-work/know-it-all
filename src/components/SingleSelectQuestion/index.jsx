@@ -11,6 +11,7 @@ const SingleSelectQuestion = ({ options, handleChange }) => {
           label={options[option]}
           name='answer'
           key={option}
+          value={option}
           handleChange={(event) => handleChange(event)}
         />
       ))}

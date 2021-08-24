@@ -15,7 +15,7 @@ const QUESTION_TYPES = {
   text_question: TextQuestion,
 };
 
-const Question = ({ question, handleChange, handleSubmit }) => {
+const Question = ({ question, handleChange, handleSubmit, resultMessage }) => {
   const renderOptions = (options, handleChange) => {
     let Options = QUESTION_TYPES[question.type];
     return <Options options={options} handleChange={handleChange} />;
@@ -29,6 +29,7 @@ const Question = ({ question, handleChange, handleSubmit }) => {
       </span>
       {renderOptions(question.options, handleChange)}
       <Button onClick={() => handleSubmit(question.id)}>Submit</Button>
+      <span className='question__message'>{resultMessage}</span>
     </div>
   );
 };
@@ -37,6 +38,7 @@ Question.propTypes = {
   question: PropTypes.object,
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func,
+  resultMessage: PropTypes.string,
 };
 
 export default Question;
