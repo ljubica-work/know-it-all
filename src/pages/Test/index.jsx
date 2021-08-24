@@ -3,8 +3,11 @@ import firebase from 'firebase';
 import { v1 as uuidv1 } from 'uuid';
 import useStateWithLocalStorage from '../../helpers/useStateWithLocalStorage';
 import { useParams } from 'react-router';
+import { useHistory } from 'react-router-dom';
+import routes from '../../constants/routes';
 
 import Question from '../../components/Question';
+import Header from '../../components/Header';
 
 import './Test.scss';
 
@@ -20,12 +23,10 @@ const Test = () => {
   const [results, setResults] = useState([]);
 
   const testId = useParams().id;
-
-  const reset = () => {
-    setCurrentQuestion(0);
-  };
+  let history = useHistory();
 
   useEffect(() => {
+    setCurrentQuestion(0);
     let questionsArray = [];
     firebase
       .firestore()
@@ -44,12 +45,13 @@ const Test = () => {
             setQuestions(questionsArray);
           });
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [testId]);
 
   const finishTest = () => {
     let rightAnswers = 0;
     results.forEach((result) => {
-      if (result.isRight) {
+      if (result.isCorrect) {
         rightAnswers++;
       }
     });
@@ -63,15 +65,11 @@ const Test = () => {
       });
   };
 
-  const handleSubmit = (questionId) => {
+  const isAnswerCorrect = (questionId) => {
     let isRight = false;
     const activeQuestion = questions.filter(
       (question) => question.id === questionId,
     )[0];
-    if (selectedAnswer.length === 0) {
-      setResultMessage('You have to choose answer');
-      return;
-    }
     if (activeQuestion.type === 'single_select') {
       if (selectedAnswer[0] === activeQuestion.answer) {
         isRight = true;
@@ -98,38 +96,11 @@ const Test = () => {
       }
     }
 
-    const userId = firebase.auth().currentUser.uid;
-    let temporaryResults = results;
-    const data = {
-      questionId,
-      selectedAnswer,
-      isRight,
-      testId,
-      userId,
-    };
-
-    temporaryResults.push(data);
-    setResults(temporaryResults);
-
-    firebase
-      .firestore()
-      .collection('users')
-      .doc(userId)
-      .collection(testId)
-      .doc(uuidv1())
-      .set(data);
-
-    if (currentQuestion < questions.length) {
-      setCurrentQuestion(currentQuestion + 1);
-    }
+    return isRight;
   };
 
-  useEffect(() => {
-    setSelectedAnswer([]);
-    setResultMessage('');
-  }, [currentQuestion]);
-
   const handleChange = (e) => {
+    setResultMessage('');
     let temporaryAnswersArray = selectedAnswer;
     if (e.target.type !== 'text') {
       if (e.target.checked) {
@@ -147,22 +118,61 @@ const Test = () => {
       temporaryAnswersArray[0] = e.target.value;
     }
     setSelectedAnswer(temporaryAnswersArray);
-    console.log(temporaryAnswersArray);
   };
+
+  const handleSubmit = (questionId) => {
+    if (selectedAnswer.length === 0) {
+      setResultMessage('Answer is required.');
+      return;
+    }
+    const isCorrect = isAnswerCorrect(questionId);
+
+    const userId = firebase.auth().currentUser.uid;
+    let temporaryResults = results;
+    const data = {
+      questionId,
+      selectedAnswer,
+      isCorrect,
+      testId,
+      userId,
+    };
+
+    temporaryResults.push(data);
+    setResults(temporaryResults);
+
+    firebase
+      .firestore()
+      .collection('users')
+      .doc(userId)
+      .collection(testId)
+      .doc(uuidv1())
+      .set(data);
+
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      finishTest();
+      history.push(`${routes.FINISH}/${testId}`);
+    }
+  };
+
+  useEffect(() => {
+    setSelectedAnswer([]);
+    setResultMessage('');
+  }, [currentQuestion]);
 
   return (
     <div className='test'>
-      <button onClick={reset}>Reset</button>
+      <Header />
       {questions.length > 0 && currentQuestion < questions.length && (
         <Question
           question={questions[currentQuestion]}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
+          resultMessage={resultMessage}
           key={questions[currentQuestion].id}
         />
       )}
-      {resultMessage}
-      <button onClick={finishTest}>Finish test</button>
     </div>
   );
 };

@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import './Checkbox.scss';
 
-const Checkbox = ({ label, name }) => {
-  const [checked, setChecked] = useState(false);
-
+const Checkbox = ({ label, name, handleChange }) => {
   return (
     <div className='checkbox'>
       <label className='checkbox__label'>
@@ -14,9 +12,9 @@ const Checkbox = ({ label, name }) => {
         <input
           type='checkbox'
           className='checkbox__input'
-          onChange={() => setChecked(!checked)}
+          onChange={(event) => handleChange(event)}
           name={name}
-          checked={checked}
+          value={name}
         />
         <span className='checkbox__checkmark'></span>
       </label>
@@ -27,6 +25,7 @@ const Checkbox = ({ label, name }) => {
 Checkbox.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
+  handleChange: PropTypes.func,
 };
 
 export default Checkbox;

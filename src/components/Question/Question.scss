@@ -1,0 +1,32 @@
+@import '../../styles/base.scss';
+
+.question {
+  background-color: $white;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 50px auto 0 auto;
+  padding: 20px 20px 30px 20px;
+  position: relative;
+
+  @include md {
+    max-width: 730px;
+  }
+}
+
+.question__title {
+  @include h2;
+}
+
+.question_instructions {
+  @include body-text(12px, 20px);
+  color: $darkGrey;
+}
+
+.question__message {
+  @include body-text(12px, 20px);
+  color: $errorRed;
+  position: absolute;
+  bottom: 5px;
+}

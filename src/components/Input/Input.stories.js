@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Input, { InputVariants, InputTypes } from '.';
+import Input, { InputVariants, iconTypes } from '.';
 
 export default {
   title: 'Input',
@@ -9,7 +9,7 @@ export default {
     type: {
       control: {
         type: 'select',
-        options: [InputTypes.MAGNIFIER, InputTypes.LOCATION],
+        options: [iconTypes.MAGNIFIER, iconTypes.LOCATION],
       },
     },
     variant: {
@@ -26,14 +26,14 @@ export const Light = Template.bind({});
 Light.args = {
   variant: InputVariants.LIGHT,
   placeholder: 'Enter desired job...',
-  type: InputTypes.MAGNIFIER,
+  type: iconTypes.MAGNIFIER,
 };
 
 export const Dark = Template.bind({});
 Dark.args = {
   variant: InputVariants.DARK,
   placeholder: 'Enter desired job...',
-  type: InputTypes.MAGNIFIER,
+  type: iconTypes.MAGNIFIER,
 };
 Dark.parameters = {
   backgrounds: { default: 'dark' },
