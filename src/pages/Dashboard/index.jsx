@@ -8,8 +8,12 @@ const Dashboard = () => {
   return (
     <div className='dashboard'>
       DASHBOARD
-      <Link to={`${routes.TEST}/Test1`}>Test1</Link>
-      <Link to={`${routes.TEST}/Test2`}>Test2</Link>
+      <br />
+      <Link to={`${routes.TEST}/css`}>CSS</Link>
+      <br />
+      <Link to={`${routes.TEST}/html`}>HTML</Link>
+      <br />
+      <Link to={`${routes.TEST}/javascript`}>JavaScript</Link>
     </div>
   );
 };

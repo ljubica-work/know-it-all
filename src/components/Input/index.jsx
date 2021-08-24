@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Icon from '../Icon';
 
 import { ReactComponent as Magnifier } from '../../assets/svg/magnifier.svg';
 import { ReactComponent as Location } from '../../assets/svg/location.svg';
@@ -21,18 +22,6 @@ const Input = ({
   type = InputTypes.LOCATION,
   ...rest
 }) => {
-  const adjustInputSize = () => {
-    const inputField = document.querySelector('.input__field');
-    inputField.setAttribute(
-      'size',
-      inputField.getAttribute('placeholder').length,
-    );
-  };
-
-  useEffect(() => {
-    adjustInputSize();
-  }, []);
-
   return (
     <div className={`input input--${variant}`}>
       <div className='input__icon-wrapper'>
@@ -53,3 +42,29 @@ Input.propTypes = {
 };
 
 export default Input;
+
+// import React from 'react';
+// import PropTypes from 'prop-types';
+// import Icon from '../../helpers/Icon';
+
+// import './Input.scss';
+
+// const Input = ({ variant = 'light', iconType, ...rest }) => {
+//   return (
+//     <div className={`input input--${variant}`}>
+//       {iconType && (
+//         <div className='input__icon-wrapper'>
+//           <Icon name={iconType} className='input__icon' />
+//         </div>
+//       )}
+//       <input {...rest} className='input__field' />
+//     </div>
+//   );
+// };
+
+// Input.propTypes = {
+//   variant: PropTypes.string,
+//   iconType: PropTypes.string,
+// };
+
+// export default Input;

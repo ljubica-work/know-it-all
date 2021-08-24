@@ -21,9 +21,9 @@ const Test = () => {
 
   const testId = useParams().id;
 
-  const reset = () => {
-    setCurrentQuestion(0);
-  };
+  // const reset = () => {
+  //   setCurrentQuestion(0);
+  // };
 
   useEffect(() => {
     let questionsArray = [];
@@ -152,7 +152,7 @@ const Test = () => {
 
   return (
     <div className='test'>
-      <button onClick={reset}>Reset</button>
+      {/* <button onClick={reset}>Reset</button> */}
       {questions.length > 0 && currentQuestion < questions.length && (
         <Question
           question={questions[currentQuestion]}
@@ -162,7 +162,7 @@ const Test = () => {
         />
       )}
       {resultMessage}
-      <button onClick={finishTest}>Finish test</button>
+      {/* <button onClick={finishTest}>Finish test</button> */}
     </div>
   );
 };
