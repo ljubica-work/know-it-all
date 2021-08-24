@@ -3,17 +3,22 @@ import PropTypes from 'prop-types';
 
 import Input from '../Input';
 
-const TextQuestion = ({ hadleChange }) => {
+import './TextQuestion.scss';
+
+const TextQuestion = ({ handleChange }) => {
   return (
     <div className='text-question'>
-      <Input />
+      <Input
+        onChange={(event) => handleChange(event)}
+        placeholder='Answer...'
+      />
     </div>
   );
 };
 
 TextQuestion.propTypes = {
   options: PropTypes.object,
-  hadleChange: PropTypes.func,
+  handleChange: PropTypes.func,
 };
 
 export default TextQuestion;

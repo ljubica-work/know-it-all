@@ -5,6 +5,20 @@
   border-radius: 6px;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin: 0 24px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+
+  @include md {
+    max-width: 730px;
+  }
+}
+
+.question__title {
+  @include h2;
+}
+
+.question_instructions {
+  @include body-text(12px, 20px);
+  color: $darkGrey;
 }

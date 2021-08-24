@@ -2,15 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Checkbox from '../Checkbox';
-import Button from '../Button';
 
-const MultiSelectQuestion = ({ options, hadleChange }) => {
-  return <div className='multi-select'>MULTI SELECT</div>;
+const MultiSelectQuestion = ({ options, handleChange }) => {
+  return (
+    <div className='multi-select'>
+      {Object.keys(options).map((option) => (
+        <Checkbox
+          label={options[option]}
+          name={options[option]}
+          key={option}
+          handleChange={(event) => handleChange(event)}
+        />
+      ))}
+    </div>
+  );
 };
 
 MultiSelectQuestion.propTypes = {
   options: PropTypes.object,
-  hadleChange: PropTypes.func,
+  handleChange: PropTypes.func,
 };
 
 export default MultiSelectQuestion;

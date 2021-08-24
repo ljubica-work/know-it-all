@@ -21,9 +21,9 @@ const Test = () => {
 
   const testId = useParams().id;
 
-  // const reset = () => {
-  //   setCurrentQuestion(0);
-  // };
+  const reset = () => {
+    setCurrentQuestion(0);
+  };
 
   useEffect(() => {
     let questionsArray = [];
@@ -145,6 +145,7 @@ const Test = () => {
       }
     } else {
       temporaryAnswersArray[0] = e.target.value;
+      console.log(temporaryAnswersArray[0]);
     }
     setSelectedAnswer(temporaryAnswersArray);
     console.log(temporaryAnswersArray);
@@ -152,7 +153,7 @@ const Test = () => {
 
   return (
     <div className='test'>
-      {/* <button onClick={reset}>Reset</button> */}
+      <button onClick={reset}>Reset</button>
       {questions.length > 0 && currentQuestion < questions.length && (
         <Question
           question={questions[currentQuestion]}

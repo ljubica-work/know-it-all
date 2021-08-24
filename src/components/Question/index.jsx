@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import questionInstructions from './questionInstructions';
 
 import SingleSelectQuestion from '../SingleSelectQuestion';
 import MultiSelectQuestion from '../MultiSelectQuestion';
@@ -22,7 +23,10 @@ const Question = ({ question, handleChange, handleSubmit }) => {
 
   return (
     <div className='question'>
-      <h3>{question.title}</h3>
+      <h3 className='question__title'>{question.title}</h3>
+      <span className='question_instructions'>
+        {questionInstructions[question.type]}
+      </span>
       {renderOptions(question.options, handleChange)}
       <Button onClick={() => handleSubmit(question.id)}>Submit</Button>
     </div>

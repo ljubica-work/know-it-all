@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
-
-import { ReactComponent as Magnifier } from '../../assets/svg/magnifier.svg';
-import { ReactComponent as Location } from '../../assets/svg/location.svg';
 
 import './Input.scss';
 
@@ -12,25 +9,21 @@ export const InputVariants = {
   DARK: 'dark',
 };
 
-export const InputTypes = {
+export const iconTypes = {
   LOCATION: 'location',
   MAGNIFIER: 'magnifier',
+  EMAIL: 'email',
+  PASSWORD: 'password',
 };
 
-const Input = ({
-  variant = InputVariants.light,
-  type = InputTypes.LOCATION,
-  ...rest
-}) => {
+const Input = ({ variant = InputVariants.LIGHT, iconType, ...rest }) => {
   return (
     <div className={`input input--${variant}`}>
-      <div className='input__icon-wrapper'>
-        {type === 'location' ? (
-          <Location className='input__icon' />
-        ) : (
-          <Magnifier className='input__icon' />
-        )}
-      </div>
+      {iconType && (
+        <div className='input__icon-wrapper'>
+          <Icon name={iconType} className='input__icon' />
+        </div>
+      )}
       <input {...rest} className='input__field' />
     </div>
   );
@@ -38,33 +31,7 @@ const Input = ({
 
 Input.propTypes = {
   variant: PropTypes.string,
-  type: PropTypes.string,
+  iconType: PropTypes.string,
 };
 
 export default Input;
-
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// import Icon from '../../helpers/Icon';
-
-// import './Input.scss';
-
-// const Input = ({ variant = 'light', iconType, ...rest }) => {
-//   return (
-//     <div className={`input input--${variant}`}>
-//       {iconType && (
-//         <div className='input__icon-wrapper'>
-//           <Icon name={iconType} className='input__icon' />
-//         </div>
-//       )}
-//       <input {...rest} className='input__field' />
-//     </div>
-//   );
-// };
-
-// Input.propTypes = {
-//   variant: PropTypes.string,
-//   iconType: PropTypes.string,
-// };
-
-// export default Input;
