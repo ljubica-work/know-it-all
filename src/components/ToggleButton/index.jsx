@@ -8,12 +8,12 @@ import { ReactComponent as Moon } from '../../assets/svg/moon.svg';
 import './ToggleButton.scss';
 
 const ToggleButton = ({ className }) => {
-  const classes = cx({
-    'toggle-button': true,
-    [className]: className,
-  });
+  // const classes = cx({
+  //   'toggle-button': true,
+  //   [className]: className,
+  // });
   return (
-    <div className={classes}>
+    <div className={cx('toggle-button', className)}>
       <Sun />
       <label className='toggle-button__label'>
         <input type='checkbox' className='toggle__checkbox' />
