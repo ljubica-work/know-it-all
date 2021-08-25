@@ -1,0 +1,64 @@
+@import '../../styles/base.scss';
+
+.finish-test {
+  background-color: $lightGrey;
+  min-height: 100vh;
+}
+
+.finish-test__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.finish-test__card {
+  width: 90%;
+  height: 228px;
+  margin: 0 auto 50px auto;
+
+  @include md {
+    width: 49%;
+    margin: 0 0 50px 0;
+  }
+
+  @include lg {
+    width: 31.5%;
+    margin-right: 30px;
+  }
+}
+
+.finish-test__additional {
+  width: 100%;
+
+  @include md {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  @include lg {
+    max-width: 1110px;
+    flex-wrap: nowrap;
+    justify-content: end;
+  }
+}
+
+.finish-test__small-title {
+  @include h2;
+  text-align: center;
+  margin: 70px 0 50px 0;
+  color: $darkGrey;
+}
+
+.finish-test__title {
+  @include h2;
+  margin: 30px 0 20px 0;
+}
+
+.finish-test__score {
+  @include h4;
+  color: $violet;
+  margin-bottom: 10px;
+}

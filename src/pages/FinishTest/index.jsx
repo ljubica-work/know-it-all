@@ -3,6 +3,8 @@ import firebase, { auth } from '../../firebase';
 import { useParams } from 'react-router';
 
 import CirclePercentage from '../../components/CirclePercentage';
+import Card from '../../components/Card';
+import Header from '../../components/Header';
 
 import './FinishTest.scss';
 
@@ -23,10 +25,10 @@ const FinishTest = () => {
       .then((res) => {
         res.docs.forEach((doc) => {
           if (!userArray.includes(doc.id)) {
-            avaliableTestArray.push(doc.data());
-            setAvailableTests(avaliableTestArray);
+            avaliableTestArray.push({ ...doc.data(), id: doc.id });
           }
         });
+        setAvailableTests(avaliableTestArray);
       });
   };
 
@@ -50,13 +52,33 @@ const FinishTest = () => {
     });
   }, [testId]);
 
+  const availableTestsTitle = () => {
+    if (availableTests.length > 0) {
+      return 'More available tests';
+    } else {
+      return 'No more available tests';
+    }
+  };
+
   return (
     <div className='finish-test'>
-      <CirclePercentage percentage={percentage} />
-      {availableTests &&
-        availableTests.map((test) => {
-          return <h1 key={test.name}>{test.name}</h1>;
-        })}
+      <Header />
+      <div className='finish-test__inner'>
+        <h1 className='finish-test__title'>Test completed!</h1>
+        <h2 className='finish-test__score'>Your score:</h2>
+        <CirclePercentage percentage={percentage} />
+        <h2 className='finish-test__small-title'>{availableTestsTitle()}</h2>
+        <div className='finish-test__additional'>
+          {availableTests &&
+            availableTests.map((test) => (
+              <Card
+                key={test.name}
+                cardInfo={test}
+                className='finish-test__card'
+              />
+            ))}
+        </div>
+      </div>
     </div>
   );
 };

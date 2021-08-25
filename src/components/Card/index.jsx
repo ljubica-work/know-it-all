@@ -3,30 +3,35 @@ import PropTypes from 'prop-types';
 import { ReactComponent as MiddleDot } from '../../assets/svg/middle-dot.svg';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes';
-import Icon from '../../components/Icon';
+import cx from 'classnames';
+
+import Icon from '../Icon';
 
 import './Card.scss';
 
-export const CardTypes = {
-  LIGHT: 'light',
-  DARK: 'dark',
-};
+const Card = ({ cardInfo, variant = 'light', className }) => {
+  const cardClasses = cx({
+    card: true,
+    [`card--${variant}`]: true,
+    [className]: className,
+  });
 
-const Card = ({ cardInfo, variant }) => {
   return (
-    <div className={`card card--${variant}`}>
-      <Icon className='card__image' name={cardInfo.testId} />
+    <div className={cardClasses}>
+      <Icon className='card__image' name={cardInfo.id} />
       <div className='card__content'>
         <div className='card__info'>
-          <span className='card__time'>{cardInfo.time}</span>
+          <span className='card__time'>
+            {cardInfo.numberOfQuestions} questions
+          </span>
           <MiddleDot className='card__middle-dot' />
-          <span className='card__engagement'>{cardInfo.engagement}</span>
+          <span className='card__engagement'>{cardInfo.level} level</span>
         </div>
-        <Link to={`${routes.TEST}/${cardInfo.testId}`}>
-          <h3 className='card__title'>{cardInfo.title}</h3>
+        <Link to={`${routes.TEST}/${cardInfo.id}`}>
+          <h3 className='card__title'>{cardInfo.name}</h3>
         </Link>
-        <span className='card__company'>{cardInfo.company}</span>
-        <span className='card__location'>{cardInfo.location}</span>
+        <span className='card__company'>{cardInfo.description}</span>
+        <span className='card__location'>Duration: {cardInfo.duration}</span>
       </div>
     </div>
   );
@@ -35,5 +40,6 @@ const Card = ({ cardInfo, variant }) => {
 Card.propTypes = {
   cardInfo: PropTypes.object,
   variant: PropTypes.string,
+  className: PropTypes.string,
 };
 export default Card;
