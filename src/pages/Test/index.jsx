@@ -3,6 +3,8 @@ import firebase from 'firebase';
 import { v1 as uuidv1 } from 'uuid';
 import useStateWithLocalStorage from '../../helpers/useStateWithLocalStorage';
 import { useParams } from 'react-router';
+import { useHistory } from 'react-router-dom';
+import routes from '../../constants/routes';
 
 import Question from '../../components/Question';
 
@@ -20,6 +22,7 @@ const Test = () => {
   const [results, setResults] = useState([]);
 
   const testId = useParams().id;
+  let history = useHistory();
 
   const reset = () => {
     setCurrentQuestion(0);
@@ -59,7 +62,7 @@ const Test = () => {
       .collection('users')
       .doc(firebase.auth().currentUser.uid)
       .update({
-        [`${testId}-result`]: percentage,
+        [testId]: percentage,
       });
   };
 
@@ -119,8 +122,11 @@ const Test = () => {
       .doc(uuidv1())
       .set(data);
 
-    if (currentQuestion < questions.length) {
+    if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+    } else {
+      finishTest();
+      history.push(`${routes.FINISH}/${testId}`);
     }
   };
 
