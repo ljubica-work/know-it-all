@@ -1,6 +1,7 @@
 import React from 'react';
 import { withWindow } from 'react-window-decorators';
 import PropTypes from 'prop-types';
+import { name as breakpointName } from '../../helpers/breakpoints';
 
 import Input from '../Input';
 import Checkbox from '../Checkbox';
@@ -10,7 +11,9 @@ import './SearchBar.scss';
 
 const SearchBar = ({ ...props }) => {
   const checkboxLabel = () => {
-    return props.breakpoint === 'large' ? 'Full Time Only' : 'Full Time';
+    return props.breakpoint === breakpointName.LARGE
+      ? 'Full Time Only'
+      : 'Full Time';
   };
 
   return (
