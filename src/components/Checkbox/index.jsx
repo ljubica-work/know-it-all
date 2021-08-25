@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 
 import './Checkbox.scss';
 
-const Checkbox = ({ label, name }) => {
+const Checkbox = ({ label, name, className }) => {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className='checkbox'>
+    <div className={`checkbox ${className}`}>
       <label className='checkbox__label'>
         {label}
-
         <input
           type='checkbox'
           className='checkbox__input'
@@ -27,6 +26,7 @@ const Checkbox = ({ label, name }) => {
 Checkbox.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Checkbox;

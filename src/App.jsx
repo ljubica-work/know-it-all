@@ -11,6 +11,7 @@ import Test from './pages/Test';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
+import SearchBar from './components/SearchBar';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -34,6 +35,7 @@ function App() {
   };
   return (
     <>
+      <SearchBar />
       <Switch>
         <Route exact path={routes.HOME}>
           <Home setCurrentUser={setCurrentUser} />

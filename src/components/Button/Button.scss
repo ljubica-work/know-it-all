@@ -1,13 +1,17 @@
 @import '../../styles/base.scss';
 
 .button {
-  padding: 16px 39px;
+  padding: 16px 14px;
   border-radius: 5px;
   cursor: pointer;
   border: none;
   outline: none;
   @include h4(16px, 16px);
   font-weight: bold;
+
+  @include lg {
+    padding: 16px 35px;
+  }
 
   &--primary {
     background-color: $violet;

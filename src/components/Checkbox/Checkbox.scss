@@ -23,6 +23,19 @@
       background-color: rgba($violet, 0.25);
     }
   }
+
+  &--large {
+    display: none;
+    @include lg {
+      display: inline;
+    }
+  }
+
+  &--mobile {
+    @include lg {
+      display: none;
+    }
+  }
 }
 
 .checkbox__input {
